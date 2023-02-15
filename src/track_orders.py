@@ -23,7 +23,14 @@ class TrackOrders:
         return most_requested
 
     def get_never_ordered_per_customer(self, customer):
-        pass
+        all_plates = set()
+        never_plates_orders = set()
+
+        for index in self.track_orders:
+            all_plates.add(index[1])
+            if index[0] == customer:
+                never_plates_orders.add(index[1])
+        return all_plates.difference(never_plates_orders)
 
     def get_days_never_visited_per_customer(self, customer):
         pass
