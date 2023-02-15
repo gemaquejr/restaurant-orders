@@ -10,7 +10,17 @@ class TrackOrders:
         self.track_orders.append((customer, order, day))
 
     def get_most_ordered_dish_per_customer(self, customer):
-        pass
+        count = {}
+        request_by_custom = [i for i in self.track_orders if i[0] == customer]
+
+        for index in request_by_custom:
+            if index[1] not in count:
+                count[index[1]] = 1
+            else:
+                count[index[1]] += 1
+
+        most_requested = max(count, key=count.get)
+        return most_requested
 
     def get_never_ordered_per_customer(self, customer):
         pass
